@@ -1,3 +1,5 @@
+package org.aldettinger;
+
 import java.time.LocalDate;
 
 import dev.langchain4j.service.UserMessage;
