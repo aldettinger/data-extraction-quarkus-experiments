@@ -1,8 +1,13 @@
 # data-extraction-quarkus-experiments
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+# Let's serve the model with Ollama:
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+In a terminal, execute commands as below:
+
+```
+MODEL_NAME=codellama
+docker run -p 11434:11434 langchain4j/ollama-${MODEL_NAME}:latest
+```
 
 ## Running the application in dev mode
 

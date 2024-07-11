@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @RegisterAiService
+@ApplicationScoped
 public interface CustomPojoExtractionService {
 
     static class CustomPojo {
@@ -16,7 +18,7 @@ public interface CustomPojoExtractionService {
     }
 
     static final String CUSTOM_POJO_EXTRACT_PROMPT
-            = "Extract information about a customer from the text delimited by triple backticks: ```{{text}}```."
+            = "Extract information about a customer from the text delimited by triple backticks: ```{text}```."
               + "The customerBirthday field should be formatted as YYYY-MM-DD."
               + "The summary field should concisely relate the customer main ask.";
 
