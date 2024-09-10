@@ -3,14 +3,10 @@ package org.aldettinger;
 import static org.apache.commons.io.IOUtils.resourceToString;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import com.github.dockerjava.zerodep.shaded.org.apache.commons.codec.Charsets;
 
-import dev.langchain4j.model.chat.ChatLanguageModel;
-import io.quarkiverse.langchain4j.ollama.OllamaChatLanguageModel;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import picocli.CommandLine;
 
 @CommandLine.Command
@@ -18,21 +14,6 @@ public class ExtractCommand implements Runnable {
 
     @Inject
     CustomPojoExtractionService customPojoExtractionService;
-
-    @Named
-    ChatLanguageModel chatLanguageModel() {
-        String modelServingUrl = String.format("http://%s:%d", "localhost", 11434);
-
-        ChatLanguageModel model = OllamaChatLanguageModel.builder()
-                .baseUrl(modelServingUrl)
-                .model("codellama")
-                //.temperature(0.0) TODO, add to quarkus-langchain4j ?
-                .format("json")
-                .timeout(Duration.ofMinutes(1L))
-                .build();
-        
-        return model;
-    }
 
     public ExtractCommand() {
     }
