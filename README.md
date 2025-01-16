@@ -2,11 +2,16 @@
 
 # Let's serve the model with Ollama:
 
-In a terminal, execute commands as below:
+In a first shell, execute command below:
 
 ```
-MODEL_NAME=codellama
-docker run -p 11434:11434 langchain4j/ollama-${MODEL_NAME}:latest
+docker run --rm -it -v cqex-data-extract-ollama:/root/.ollama -p 11434:11434 --name cqex-data-extract-ollama ollama/ollama:0.5.7
+```
+
+In a second shell, execute command below:
+
+```
+docker exec -it cqex-data-extract-ollama ollama pull granite3-dense
 ```
 
 ## Packaging and running the application

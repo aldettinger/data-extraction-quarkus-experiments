@@ -1,7 +1,5 @@
 package org.aldettinger;
 
-import java.time.LocalDate;
-
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
 import io.quarkus.runtime.annotations.RegisterForReflection;
@@ -15,7 +13,7 @@ public interface CustomPojoExtractionService {
     static class CustomPojo {
         public boolean customerSatisfied;
         public String customerName;
-        public LocalDate customerBirthday;
+        public String customerBirthday;
         public String summary;
     }
 
