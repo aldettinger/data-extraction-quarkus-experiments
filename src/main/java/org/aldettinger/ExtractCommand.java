@@ -3,8 +3,7 @@ package org.aldettinger;
 import static org.apache.commons.io.IOUtils.resourceToString;
 
 import java.io.IOException;
-
-import com.github.dockerjava.zerodep.shaded.org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import jakarta.inject.Inject;
 import picocli.CommandLine;
@@ -26,7 +25,7 @@ public class ExtractCommand implements Runnable {
 
         for (String conversationResourceName : conversationResourceNames) {
             try {
-                String conversation = resourceToString(String.format("/texts/%s", conversationResourceName), Charsets.UTF_8);
+                String conversation = resourceToString(String.format("/texts/%s", conversationResourceName), StandardCharsets.UTF_8);
                 long begin = System.currentTimeMillis();
                 CustomPojoExtractionService.CustomPojo answer = customPojoExtractionService.extractFromText(conversation);
                 long duration = System.currentTimeMillis() - begin;
